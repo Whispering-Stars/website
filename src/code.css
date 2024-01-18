@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.prose code[class*="language-"],
+.prose pre[class*="language-"] {
+    color: theme('colors.white-rock');
+    font-size: theme('fontSize.sm');
+    tab-size: 2;
+}
+
+.prose pre {
+    padding: theme('padding.4');
+    line-height: theme('lineHeight.6');
+    background-color: theme('colors.mariner');
+    border-radius: theme('borderRadius.md');
+    overflow-x: auto;
+}

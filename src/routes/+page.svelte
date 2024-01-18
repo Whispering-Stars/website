@@ -1,59 +1,76 @@
-<script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+<script lang="ts">
+	import NavButton from '$lib/components/NavButton.svelte';
+	import BlogCard from '$lib/components/BlogCard.svelte';
+	import ProjectCard from '$lib/components/ProjectCard.svelte';
+	import SeeMoreButton from '$lib/components/SeeMoreButton.svelte';
+	import { navigationRoutes } from '$lib/utils';
+	import type { ProjectArticle, BlogArticle, ExperienceArticle } from '$lib/types';
+	import ExperienceCard from '$lib/components/ExperienceCard.svelte';
+
+	export let data: {
+		projectArticles: ProjectArticle[];
+		blogArticles: BlogArticle[];
+		experienceArticles: ExperienceArticle[];
+	};
+
+	const filteredProjectArticles = data.projectArticles.slice(0, 3);
+	const filteredBlogArticles = data.blogArticles.slice(0, 3);
+	const filteredExperienceArticles = data.experienceArticles.slice(0, 3);
 </script>
 
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
-
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+<section class="h-144">
+	<div
+		class="w-full min-h-4/5 flex flex-col justify-center items-center font-semibold bg-white-rock border-b-4 border-mariner text-5xl font-baloo"
+	>
+		<h1 class="text-mariner mb-4">WHISPERING</h1>
+		<h1 class="text-salmon">STARS</h1>
+	</div>
+	<ul class="absolute z-10 w-72 bg-salmon left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg">
+		{#each navigationRoutes as item, idx}
+			<NavButton
+				{item}
+				{idx}
+				roundedTop={idx === 0}
+				roundedBottom={idx === navigationRoutes.length - 1}
+			/>
+		{/each}
+	</ul>
 </section>
 
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
+<section class="flex flex-col items-center py-4">
+	<ul class="flex flex-col items-center">
+		{#each filteredProjectArticles as article}
+			<li class="m-4">
+				<ProjectCard {article} />
+			</li>
+		{/each}
+	</ul>
+	<SeeMoreButton text="See more projects" path="/projects" />
+</section>
 
-	h1 {
-		width: 100%;
-	}
+<section class="flex flex-col items-center bg-white-rock border-y-4 border-mariner py-4">
+	<ul class="flex flex-col items-center">
+		{#each filteredBlogArticles as article}
+			<li class="m-4">
+				<BlogCard {article} />
+			</li>
+		{/each}
+	</ul>
+	<SeeMoreButton text="See more articles" path="/blog" />
+</section>
 
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
+<section class="flex flex-col items-center py-4">
+	<ul>
+		{#each filteredExperienceArticles as article}
+			<li class="m-4">
+				<ExperienceCard {article} />
+			</li>
+		{/each}
+	</ul>
+</section>
 
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+<style lang="postcss">
+	:global(html) {
+		background-color: theme(colors.flamingo-pink);
 	}
 </style>

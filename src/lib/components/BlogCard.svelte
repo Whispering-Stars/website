@@ -1,0 +1,30 @@
+<script lang="ts">
+	import Tag from '$lib/components/Tag.svelte';
+	import type { BlogArticle } from '$lib/types';
+	import { formatDate } from '$lib/utils';
+	import path from 'path';
+
+	export let article: BlogArticle;
+</script>
+
+<a href={`/blog/${article.slug}`}>
+	<figure class="w-80 max-h-128 rounded-lg shadow-ws-default bg-white-rock border-4 border-mariner">
+		<div class="bg-salmon rounded-t-md border-b-4 border-mariner text-mariner font-semibold p-2">
+			<h1 class="text-xl">{article.title}</h1>
+			<small>
+				{formatDate(article.date)}
+			</small>
+		</div>
+		<img class="object-cover max-h-36 w-full opacity-90" src={article.cover} alt="" />
+		<div class="m-4">
+			<p class="max-h-64 mb-4 text-mariner overflow-ellipsis">{article.description}</p>
+			<ul class="grid gap-2 grid-cols-2">
+				{#each article.tags as tag}
+					<li>
+						<Tag text={tag} />
+					</li>
+				{/each}
+			</ul>
+		</div>
+	</figure>
+</a>
