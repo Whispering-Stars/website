@@ -15,3 +15,8 @@
     margin-top: theme('margin.4');
     margin-bottom: theme('margin.4');
 }
+
+.prose a {
+    color: theme('colors.salmon');
+    text-decoration: underline;
+}

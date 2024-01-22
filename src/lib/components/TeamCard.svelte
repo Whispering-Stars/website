@@ -12,7 +12,7 @@
 		<h2 class="text-mariner font-semibold">{article.position}</h2>
 	</div>
 	<a class="flex justify-between bg-salmon p-2" href="/">
-		<p class="text-mariner font-semibold">Learn more</p>
+		<p class="text-mariner font-semibold">Meet {article.name}</p>
 		<ArrowUp />
 	</a>
 </figure>

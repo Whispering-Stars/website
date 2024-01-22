@@ -9,7 +9,7 @@ tags:
   - markdown
   - webdev
 cover: /images/blog/on-building-a-blog-with-sveltekit/ws_logo_no_border.svg
-draft: true
+draft: false
 ---
 
 J'ai ecris des projets avec [Flutter](), [Vue]() ou encore [React]() mais pour mon nouveau site, je voulais essayer quelque chose de nouveau.
@@ -29,14 +29,14 @@ En plus de pouvoir partager mes passions et ce qui me passe par la tete, ca me p
 
 Je sais que la plupart d'entre vous ne sont interesse que par le code, cependant j'aimerais quand meme faire un tour par les idees et les inspiration derriere le design de ce site.
 
-- Ce que je veux/Inspiration
--- Un style un peu jeu retro
--- Minimalisme
--- Palette limite
--- https://mac-template.webflow.io/
-- Resultat final
--- Pas d'animation
--- Pas de titre pour les parties comme Mac
+Avant tout je voulais un design minimaliste pour limiter le temps de developpement et eviter la surcharge d'element a l'ecran (le fonctionnel avant tout).
+Dans ma recherche d'inpiration, je suis tombe sur ce [design](https://mac-template.webflow.io/) de [Mackenzie Child](https://www.mackenziechild.me/) qui me rappellait les debuts des interfaces graphique tout en apportant une touche moderne.
+
+Pour parfaire le design retro et reste dans le theme, je me suis arrete sur la palette de couleur [SODA-CAP](https://lospec.com/palette-list/soda-cap) par [Cappuchi](https://lospec.com/cpch01). C'est une contrainte que me suis impose a moi-mem d'avoir une palette limite qui rappelle l'epoque 8-Bit.
+
+Et avec tout ca en tete, voici le design final sur Figma:
+
+![Whispering Stars design](/images/blog/on-building-a-blog-with-sveltekit/WorldDesktop.png)
 
 SvelteKit
 - Qu'est-ce que c'est?

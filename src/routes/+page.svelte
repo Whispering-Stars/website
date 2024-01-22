@@ -45,7 +45,9 @@
 			</li>
 		{/each}
 	</ul>
-	<SeeMoreButton text="See more projects" path="/projects" />
+	{#if filteredProjectArticles.length > 4}
+		<SeeMoreButton text="See more projects" path="/projects" />
+	{/if}
 </section>
 
 <section class="flex flex-col items-center bg-white-rock border-y-4 border-mariner py-4">
@@ -56,7 +58,9 @@
 			</li>
 		{/each}
 	</ul>
-	<SeeMoreButton text="See more articles" path="/blog" />
+	{#if filteredBlogArticles.length > 4}
+		<SeeMoreButton text="See more articles" path="/blog" />
+	{/if}
 </section>
 
 <section class="flex flex-col items-center py-4">
@@ -67,7 +71,9 @@
 			</li>
 		{/each}
 	</ul>
-	<SeeMoreButton text="See more team members" path="/team" />
+	{#if filteredTeamArticles.length > 4}
+		<SeeMoreButton text="Meet the team" path="/team" />
+	{/if}
 </section>
 
 <style lang="postcss">

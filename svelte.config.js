@@ -4,7 +4,10 @@ import { mdsvex } from 'mdsvex';
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
-	extensions: ['.svelte', '.svx', '.md'],
+	extensions: ['.md'],
+	layout: {
+		_: './src/mdsvex.svelte'
+	}
 }
 
 
