@@ -10,8 +10,8 @@ export const navigationRoutes: Array<NavigationRoute> = [
         path: '/blog'
     },
     {
-        name: 'Experience',
-        path: '/experience'
+        name: 'Team',
+        path: '/team'
     }
 ];
 

@@ -5,7 +5,9 @@
 	export let article: BlogArticle;
 </script>
 
-<figure class="w-80 max-h-72 shadow-ws-default bg-white-rock border-4 border-mariner">
+<figure
+	class="w-80 max-h-80 rounded-lg overflow-auto shadow-ws-default bg-white-rock border-4 border-mariner"
+>
 	<div class="bg-salmon border-b-4 border-mariner p-2">
 		<h1 class="text-center text-mariner text-xl font-semibold">{article.title}</h1>
 	</div>

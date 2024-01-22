@@ -1,17 +1,14 @@
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
-import rehypePrism from 'rehype-prism-plus'
-import rehypeRaw from 'rehype-raw'
 import rehypeStringify from 'rehype-stringify'
-
-import remarkGfm from 'remark-gfm'
+import rehypePrettyCode from 'rehype-pretty-code'
 
 import fs from 'fs/promises'
 import matter from "gray-matter"
 import path from "path"
 
-import type { ProjectArticle, BlogArticle, ExperienceArticle, Frontmatter } from "./types"
+import type { ProjectArticle, BlogArticle, TeamArticle, Frontmatter } from "./types"
 
 async function parseMarkdownFiles(folder: string) {
     try {
@@ -38,12 +35,8 @@ async function markdownToHtml(markdown: string) {
 
     const result = await unified()
         .use(remarkParse)
-        .use([
-            remarkGfm
-        ])
         .use(remarkRehype)
-        .use(rehypePrism)
-        .use(rehypeRaw)
+        .use(rehypePrettyCode)
         .use(rehypeStringify).process(content)
 
     return {
@@ -65,7 +58,7 @@ async function parseMarkdownFile(slug: string) {
 export async function getProjectsArticles() {
     let articles: ProjectArticle[] = await parseMarkdownFiles('projects')
 
-    articles = articles.filter((article) => article.published)
+    articles = articles.filter((article) => !article.draft)
     articles = articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
     return articles
@@ -74,16 +67,16 @@ export async function getProjectsArticles() {
 export async function getBlogArticles() {
     let articles: BlogArticle[] = await parseMarkdownFiles('blog')
 
-    articles = articles.filter((article) => article.published)
+    articles = articles.filter((article) => !article.draft)
     articles = articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
     return articles
 }
 
-export async function getExperiencesArticles() {
-    let articles: ExperienceArticle[] = await parseMarkdownFiles('experiences')
+export async function getTeamArticles() {
+    let articles: TeamArticle[] = await parseMarkdownFiles('team')
 
-    articles = articles.filter((article) => article.published)
+    articles = articles.filter((article) => !article.draft)
     articles = articles.sort((a, b) => a.name.localeCompare(b.name))
 
     return articles

@@ -9,7 +9,6 @@
 	export let roundedBottom: Boolean = false;
 
 	function buildBorder() {
-		console.log(idx);
 		if (isHeader) {
 			return 'border-b-4';
 		} else {

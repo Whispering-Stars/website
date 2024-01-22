@@ -2,7 +2,7 @@
 	import { formatDate } from '$lib/utils';
 
 	import '../../../article.css';
-	import '../../../code.css';
+	// import '../../../code.css';
 
 	export let data;
 
@@ -10,7 +10,9 @@
 </script>
 
 <main class="flex justify-center py-10">
-	<article class="w-80 prose bg-white-rock shadow-ws-default border-4 border-mariner">
+	<article
+		class="w-80 rounded-lg overflow-auto prose bg-white-rock shadow-ws-default border-4 border-mariner"
+	>
 		<header
 			class="text-mariner font-semibold bg-cover bg-center bg-no-repeat bg-opacity-5"
 			style={`background-image:linear-gradient(rgba(255, 125, 110, .9), rgba(232, 231, 203, .95)), url(${frontmatter.cover})`}

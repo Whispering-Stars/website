@@ -10,7 +10,7 @@ export type BlogArticle = {
     date: string;
     tags: string[];
     cover: string;
-    published: boolean;
+    draft: boolean;
 };
 
 export type ProjectArticle = {
@@ -20,16 +20,16 @@ export type ProjectArticle = {
     date: string;
     tags: string[];
     cover: string;
-    published: boolean;
+    draft: boolean;
 };
 
-export type ExperienceArticle = {
+export type TeamArticle = {
     name: string;
     position: string;
     slug: string;
     date: string;
     cover: string;
-    published: boolean;
+    draft: boolean;
 };
 
 export type Frontmatter = {
@@ -41,5 +41,5 @@ export type Frontmatter = {
     date: string;
     tags: string[];
     cover: string;
-    published: boolean;
+    draft: boolean;
 }

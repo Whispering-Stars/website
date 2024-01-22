@@ -2,14 +2,15 @@
 	import Tag from '$lib/components/Tag.svelte';
 	import type { BlogArticle } from '$lib/types';
 	import { formatDate } from '$lib/utils';
-	import path from 'path';
 
 	export let article: BlogArticle;
 </script>
 
 <a href={`/blog/${article.slug}`}>
-	<figure class="w-80 max-h-128 rounded-lg shadow-ws-default bg-white-rock border-4 border-mariner">
-		<div class="bg-salmon rounded-t-md border-b-4 border-mariner text-mariner font-semibold p-2">
+	<figure
+		class="w-80 max-h-128 rounded-lg overflow-auto shadow-ws-default bg-white-rock border-4 border-mariner"
+	>
+		<div class="bg-salmon border-b-4 border-mariner text-mariner font-semibold p-2">
 			<h1 class="text-xl">{article.title}</h1>
 			<small>
 				{formatDate(article.date)}

@@ -4,18 +4,18 @@
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import SeeMoreButton from '$lib/components/SeeMoreButton.svelte';
 	import { navigationRoutes } from '$lib/utils';
-	import type { ProjectArticle, BlogArticle, ExperienceArticle } from '$lib/types';
-	import ExperienceCard from '$lib/components/ExperienceCard.svelte';
+	import type { ProjectArticle, BlogArticle, TeamArticle } from '$lib/types';
+	import TeamCard from '$lib/components/TeamCard.svelte';
 
 	export let data: {
 		projectArticles: ProjectArticle[];
 		blogArticles: BlogArticle[];
-		experienceArticles: ExperienceArticle[];
+		teamArticles: TeamArticle[];
 	};
 
 	const filteredProjectArticles = data.projectArticles.slice(0, 3);
 	const filteredBlogArticles = data.blogArticles.slice(0, 3);
-	const filteredExperienceArticles = data.experienceArticles.slice(0, 3);
+	const filteredTeamArticles = data.teamArticles.slice(0, 3);
 </script>
 
 <section class="h-144">
@@ -61,12 +61,13 @@
 
 <section class="flex flex-col items-center py-4">
 	<ul>
-		{#each filteredExperienceArticles as article}
+		{#each filteredTeamArticles as article}
 			<li class="m-4">
-				<ExperienceCard {article} />
+				<TeamCard {article} />
 			</li>
 		{/each}
 	</ul>
+	<SeeMoreButton text="See more team members" path="/team" />
 </section>
 
 <style lang="postcss">

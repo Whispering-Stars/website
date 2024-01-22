@@ -8,7 +8,6 @@
 	let open: Boolean = false;
 
 	function toggleMenu() {
-		console.log(open);
 		open = !open;
 	}
 </script>
