@@ -46,7 +46,7 @@ Et avec tout ca en tete, voici le design final sur Figma:
 
 Svelte est l'un des nouveaux "cool kids" des framework front-end Javascript qui se veut une alternatives aux React, Vue et autres framework du genre.
 
-Techniquement la grosse difference entre Svelte et les alternatives est que Svelte n'utilise pas de DOM virtuel ([eli5](https://eli5.gg/Virtual%20DOM)), ([en details](https://refine.dev/blog/react-virtual-dom/#components-of-the-virtual-dom)). En fait Svelte est un compilateur qui va prendre le code dans les fichier `.svelte` et le compiler en modules JS optimises.
+Techniquement la grosse difference entre Svelte et les alternatives est que Svelte n'utilise pas de DOM virtuel ([eli5](https://eli5.gg/Virtual%20DOM)), ([en details](https://refine.dev/blog/react-virtual-dom/#components-of-the-virtual-dom)). En fait Svelte est un compilateur qui va prendre le code dans les fichier `.svelte{:console}` et le compiler en modules JS optimises.
 
 Je l'ai personnellement choisi pour sa simplicite.
 
@@ -58,7 +58,7 @@ SvelteKit est framework d'application base sur Svelte. Comme les alternatives [N
 
 > **NOTE**: La partie suivante presuppose que vous avez [Node]() deja installe sur votre machine.
 
-Pour creer une projet `SvelteKit`, c'est assez simplement, sur votre terminal prefere, entrer:
+Pour creer une projet *SvelteKit*, c'est assez simplement, sur votre terminal prefere, entrer:
 
 ```console
 npm create svelte@latest my-app
@@ -73,3 +73,58 @@ npm run dev
 ```
 
 Ces commandes permettent de telecharger les dependances et de lancer un serveur de developpement. Si tout s'est bien passe, vous devriez avoir une page d'accueil Svelte a l'adresse `localhost:5713`.
+
+### La structure d'un projet SvelteKit
+
+Un projet SvelteKit fraichement creer, ressemble a peu pres a ca (la structure peut varier selon la version utilisee).
+
+```bash
+src
+├── app.d.ts
+├── app.html
+├── lib
+│   ├── index.ts
+└── routes
+    ├── +layout.svelte
+    ├── +page.svelte
+```
+
+La chose la plus importante a retenir ici est la presence du `+{:console}` devant certain nom de fichier. Ce `+` permet a SvelteKit de creer nos routes.
+
+Ainsi tout les fichiers `+page.svelte{:console}` dans le dossier `routes/{:console}` sont consideres par SvelteKit comme des declaration de routes. Ce qui veut dire qu'un fichier `routes/blog/+page.svelte{:console}` creera une route `/blog{:console}`.
+
+Quant au fichier `+layout.svelte`, il permet de creer un layout qui sera partage par toutes les routes.
+Si vous ouvrez le ce fichier vous verrez une balise `<slot />{:html}`. Cette balise sera remplace par le code HTML contenu dans les fichier `+page.svelte{:console}`.
+Ainsi vous pouvez par exemple faire ceci:
+```html
+<CustomHeader />
+
+<slot />
+
+<CustomFooter />
+```
+Les composants `CustomHeader{:console}` et `CustomFooter{:console}` apparaitront maintenant dans l'ensemble de vos routes.
+
+A noter que le fichier `+layout.svelte{:console}` dans un sous-dossier ne remplace pas le layout parent mais est integre dans ce dernier.
+Ce qui veut dire que dans un cas comme celui-ci:
+```bash
+routes
+    └── blog
+        ├── +layout.svelte
+        ├── +page.svelte
+    ├── +layout.svelte
+    ├── +page.svelte
+```
+Le layout de `blog/{:console}` sera integre dans le `<slot />{:html}` du layout de `routes/{:console}`, donnant ce code (pseudocode):
+```html
+<CustomHeader />
+
+<BlogLayout>
+  <slot />
+<BlogLayout />
+
+<CustomFooter />
+```
+
+## Le blog
+

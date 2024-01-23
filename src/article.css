@@ -8,6 +8,7 @@
     margin-bottom: theme('margin.4');
     font-weight: theme('fontWeight.semibold');
     font-size: theme('fontSize.xl');
+    text-decoration: underline;
 }
 
 .prose h3 {
