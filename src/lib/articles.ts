@@ -1,6 +1,8 @@
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
+import rehypeRaw from 'rehype-raw'
+import rehypeFormat from 'rehype-format'
 import rehypeStringify from 'rehype-stringify'
 import rehypePrettyCode from 'rehype-pretty-code'
 
@@ -33,11 +35,17 @@ async function parseMarkdownFiles(folder: string) {
 async function markdownToHtml(markdown: string) {
     const { content, data } = matter(markdown)
 
+    console.log(content)
+
     const result = await unified()
         .use(remarkParse)
-        .use(remarkRehype)
+        .use(remarkRehype, { allowDangerousHtml: true })
+        .use(rehypeRaw)
+        .use(rehypeFormat)
         .use(rehypePrettyCode)
         .use(rehypeStringify).process(content)
+
+    console.log(result.value)
 
     return {
         content: result.value as string,

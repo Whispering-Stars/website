@@ -12,19 +12,24 @@
 	}
 </script>
 
-<header class="bg-salmon min-h-12 max-h-24 h-12 border-b-4 border-mariner">
-	<div class="h-full flex mx-3 justify-between items-center">
+<header class="bg-salmon min-h-12 max-h-24 h-12 lg:h-16 border-b-4 border-mariner">
+	<div class="h-full flex mx-3 justify-between lg:justify-start items-center">
 		<a href="/">
 			<img
-				class="w-7 h-7 rounded-sm shadow-ws-sm"
+				class="w-7 h-7 lg:w-8 lg:h-8 rounded-sm shadow-ws-sm"
 				src={logo}
 				alt="Whispering Stars logo"
 				loading="lazy"
-				width="25"
-				height="25"
+				width="50"
+				height="50"
 			/>
 		</a>
-		<button on:click={toggleMenu}>
+		<ul class="invisible lg:visible mx-4">
+			{#each navigationRoutes as item}
+				<a class="text-mariner font-semibold px-4 text-lg" href={item.path}>{item.name}</a>
+			{/each}
+		</ul>
+		<button class="lg:hidden" on:click={toggleMenu}>
 			{#if open}
 				<XMark />
 			{:else}

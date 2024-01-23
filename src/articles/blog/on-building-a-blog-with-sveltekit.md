@@ -25,7 +25,7 @@ Maintenant que je suis au chomage, je me suis retrouve une passion pour l'ecritu
 
 En plus de pouvoir partager mes passions et ce qui me passe par la tete, ca me permettra egalement d'approfondir mes connaissances en partageant ce que j'apprends avec les Internet.
 
-## Du beau et du fonctionnel
+## Du beau, du retro et du fonctionnel
 
 Je sais que la plupart d'entre vous ne sont interesse que par le code, cependant j'aimerais quand meme faire un tour par les idees et les inspiration derriere le design de ce site.
 
@@ -36,24 +36,40 @@ Pour parfaire le design retro et reste dans le theme, je me suis arrete sur la p
 
 Et avec tout ca en tete, voici le design final sur Figma:
 
-![Whispering Stars design](/images/blog/on-building-a-blog-with-sveltekit/WorldDesktop.png)
+<div class="flex justify-center">
+<img class="w-80 border-4 border-mariner rounded-lg" src='/images/blog/on-building-a-blog-with-sveltekit/WorldDesktop.png' alt='Whispering Stars design' loading="lazy" />
+</div>
 
-SvelteKit
-- Qu'est-ce que c'est?
-- Installation
--- Installer node/npm
--- Installer sveltekit
--- Creer le projet
-- Le blog
--- Utiliser Markdown pour le page du blog
--- mdsvex
--- Petit probleme (Rollup)
--- Solution
---- Reecrire la recuperation des pages
-- Les autres pages
--- Reutiliser le meme concept pour les autres pages en utilisants differents dossiers
+## Svelte & SvelteKit
 
-Conclusion
-- Resume des choix faits
-- Pas un simple site portfolio
-- Faite l'experience vous meme
+### Svelte
+
+Svelte est l'un des nouveaux "cool kids" des framework front-end Javascript qui se veut une alternatives aux React, Vue et autres framework du genre.
+
+Techniquement la grosse difference entre Svelte et les alternatives est que Svelte n'utilise pas de DOM virtuel ([eli5](https://eli5.gg/Virtual%20DOM)), ([en details](https://refine.dev/blog/react-virtual-dom/#components-of-the-virtual-dom)). En fait Svelte est un compilateur qui va prendre le code dans les fichier `.svelte` et le compiler en modules JS optimises.
+
+Je l'ai personnellement choisi pour sa simplicite.
+
+### SvelteKit
+
+SvelteKit est framework d'application base sur Svelte. Comme les alternatives [Next]() pour React ou [Nuxt]() pour Vue, son but est d'apporter des solutions aux problemes lies a la creation de site complexe (routage, SSR, prerendu, recuperation des donnees, etc).
+
+### Creation du projet SvelteKit
+
+> **NOTE**: La partie suivante presuppose que vous avez [Node]() deja installe sur votre machine.
+
+Pour creer une projet `SvelteKit`, c'est assez simplement, sur votre terminal prefere, entrer:
+
+```console
+npm create svelte@latest my-app
+```
+
+Une fois le projet creer, entrez les commandes suivantes:
+
+```console
+cd my-app
+npm install
+npm run dev
+```
+
+Ces commandes permettent de telecharger les dependances et de lancer un serveur de developpement. Si tout s'est bien passe, vous devriez avoir une page d'accueil Svelte a l'adresse `localhost:5713`.

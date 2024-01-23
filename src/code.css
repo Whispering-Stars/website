@@ -2,17 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-.prose code[class*="language-"],
-.prose pre[class*="language-"] {
-    color: theme('colors.white-rock');
-    font-size: theme('fontSize.sm');
-    tab-size: 2;
+pre {
+    overflow-x: auto;
+    padding-top: theme('padding.4');
+    padding-bottom: theme('padding.4');
+    border-radius: theme('borderRadius.md');
 }
 
-.prose pre {
-    padding: theme('padding.4');
-    line-height: theme('lineHeight.6');
-    background-color: theme('colors.mariner');
-    border-radius: theme('borderRadius.md');
-    overflow-x: auto;
+pre [data-line] {
+    padding-left: theme('padding.4');
+    padding-right: theme('padding.4');
 }
