@@ -14,7 +14,6 @@ draft: false
 ---
 
 I've written projects with [Flutter](https://flutter.dev/), [Vue](https://vuejs.org/) or [React](https://react.dev/) but for my new site, I wanted to try something else.
-That's when I discovered[Svelte](https://svelte.dev/) & [SvelteKit](https://kit.svelte.dev/).
 
 ## Why a new website?
 
