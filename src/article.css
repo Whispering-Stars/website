@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.prose h2 {
+    color: theme('colors.mariner');
+    margin-top: theme('margin.8');
+    margin-bottom: theme('margin.4');
+    font-weight: theme('fontWeight.semibold');
+    font-size: theme('fontSize.xl');
+    text-decoration: underline;
+}
+
+.prose h3 {
+    color: theme('colors.mariner');
+    margin-top: theme('margin.8');
+    margin-bottom: theme('margin.4');
+    font-weight: theme('fontWeight.semibold');
+    font-size: theme('fontSize.lg');
+}
+
+.prose p {
+    color: theme('colors.mariner');
+    margin-top: theme('margin.4');
+    margin-bottom: theme('margin.4');
+}
+
+.prose a {
+    text-decoration: underline;
+}
