@@ -11,18 +11,22 @@ import fs from 'fs/promises'
 import matter from "gray-matter"
 import path from "path"
 
-import type { ProjectArticle, BlogArticle, TeamArticle, Frontmatter } from "./types"
+import type { Article } from "./types"
 
-async function parseMarkdownFiles(folder: string) {
+async function parseMarkdownFiles(type?: string) {
     try {
         const articles: any[] = []
-        const articlesPath = path.resolve(`articles/${folder}`)
+        const articlesPath = path.resolve('articles')
         const folders = await fs.readdir(articlesPath)
 
         for (const e of folders) {
             const markdownFilePath = path.join(articlesPath, `${e}`)
             const markdownContent = await fs.readFile(markdownFilePath, 'utf-8')
             const { data } = matter(markdownContent)
+
+            if (typeof type !== 'undefined' && data.type !== type) {
+                continue
+            }
 
             articles.push(data)
         }
@@ -47,7 +51,7 @@ async function markdownToHtml(markdown: string) {
 
     return {
         content: result.value as string,
-        frontmatter: data as Frontmatter
+        frontmatter: data as Article
     }
 }
 
@@ -61,28 +65,8 @@ async function parseMarkdownFile(slug: string) {
     }
 }
 
-export async function getProjectsArticles() {
-    let articles: ProjectArticle[] = await parseMarkdownFiles('projects')
-
-    articles = articles
-        .filter((article) => !article.draft)
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-
-    return articles
-}
-
-export async function getBlogArticles() {
-    let articles: BlogArticle[] = await parseMarkdownFiles('blog')
-
-    articles = articles
-        .filter((article) => !article.draft)
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-
-    return articles
-}
-
-export async function getTeamArticles() {
-    let articles: TeamArticle[] = await parseMarkdownFiles('team')
+export async function getArticles(type?: string) {
+    let articles: Article[] = await parseMarkdownFiles(type)
 
     articles = articles.filter((article) => !article.draft)
     articles = articles.sort((a, b) => a.name.localeCompare(b.name))
@@ -90,6 +74,6 @@ export async function getTeamArticles() {
     return articles
 }
 
-export async function getBlogArticle(slug: string) {
-    return parseMarkdownFile(path.join('blog', slug))
+export async function getArticle(slug: string) {
+    return parseMarkdownFile(slug)
 }

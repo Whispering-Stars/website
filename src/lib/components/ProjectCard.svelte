@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { BlogArticle } from '$lib/types';
+	import type { ProjectArticle } from '$lib/types';
 	import Tag from '$lib/components/Tag.svelte';
 
-	export let article: BlogArticle;
+	export let article: ProjectArticle;
 </script>
 
 <figure

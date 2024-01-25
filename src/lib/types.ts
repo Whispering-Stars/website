@@ -3,36 +3,7 @@ export type NavigationRoute = {
     path: string;
 };
 
-export type BlogArticle = {
-    title: string;
-    description: string;
-    slug: string;
-    date: string;
-    tags: string[];
-    cover: string;
-    draft: boolean;
-};
-
-export type ProjectArticle = {
-    title: string;
-    description: string;
-    slug: string;
-    date: string;
-    tags: string[];
-    cover: string;
-    draft: boolean;
-};
-
-export type TeamArticle = {
-    name: string;
-    position: string;
-    slug: string;
-    date: string;
-    cover: string;
-    draft: boolean;
-};
-
-export type Frontmatter = {
+export type Article = {
     title: string;
     name: string;
     description: string;
@@ -41,5 +12,6 @@ export type Frontmatter = {
     date: string;
     tags: string[];
     cover: string;
+    type: string;
     draft: boolean;
 }

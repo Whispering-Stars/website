@@ -1,10 +1,12 @@
-import { getProjectsArticles, getBlogArticles, getTeamArticles } from '$lib/articles';
-import type { ProjectArticle, BlogArticle, TeamArticle } from '$lib/types';
+import { getArticles } from '$lib/articles';
+import type { Article } from '$lib/types';
 
 export async function load() {
-    const projectArticles: ProjectArticle[] = await getProjectsArticles()
-    const blogArticles: BlogArticle[] = await getBlogArticles()
-    const teamArticles: TeamArticle[] = await getTeamArticles()
+    const articles: Article[] = await getArticles()
 
-    return { projectArticles, blogArticles, teamArticles }
+    return {
+        projectsArticles: articles.filter((article) => article.type === 'projects'),
+        blogArticles: articles.filter((article) => article.type === 'blog'),
+        teamArticles: articles.filter((article) => article.type === 'team'),
+    }
 }

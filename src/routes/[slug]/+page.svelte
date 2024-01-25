@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { formatDate } from '$lib/utils';
 
-	import '../../../article.css';
-	import '../../../code.css';
-	import '../../../prism-laserwave.css';
+	import '../../article.css';
+	import '../../code.css';
+	import '../../prism-laserwave.css';
 
 	export let data;
 
@@ -14,6 +14,7 @@
 	<title>{frontmatter.title}</title>
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content={frontmatter.title} />
+	<meta property="og:description" content={frontmatter.description} />
 </svelte:head>
 
 <article class="flex justify-center py-10">

@@ -1,12 +1,12 @@
 <script lang="ts">
 	import Tag from '$lib/components/Tag.svelte';
-	import type { BlogArticle } from '$lib/types';
+	import type { Article } from '$lib/types';
 	import { formatDate } from '$lib/utils';
 
-	export let article: BlogArticle;
+	export let article: Article;
 </script>
 
-<a href={`/blog/${article.slug}`}>
+<a href={`/${article.slug}`}>
 	<figure
 		class="w-80 max-h-128 rounded-lg overflow-auto shadow-ws-default bg-white-rock border-4 border-mariner"
 	>
