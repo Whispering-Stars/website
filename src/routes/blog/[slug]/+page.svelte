@@ -3,14 +3,21 @@
 
 	import '../../../article.css';
 	import '../../../code.css';
+	import '../../../prism-laserwave.css';
 
 	export let data;
 
 	const { content, frontmatter } = data.article;
 </script>
 
-<main class="flex justify-center py-10">
-	<article
+<svelte:head>
+	<title>{frontmatter.title}</title>
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content={frontmatter.title} />
+</svelte:head>
+
+<article class="flex justify-center py-10">
+	<div
 		class="w-80 sm:w-3/4 xl:w-1/2 rounded-lg overflow-auto prose bg-white-rock shadow-ws-default border-4 border-mariner"
 	>
 		<header
@@ -25,8 +32,8 @@
 		<div class="p-4 lg:p-5">
 			{@html content}
 		</div>
-	</article>
-</main>
+	</div>
+</article>
 
 <style lang="postcss">
 	:global(html) {

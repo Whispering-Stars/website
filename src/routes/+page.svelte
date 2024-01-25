@@ -3,24 +3,29 @@
 	import BlogCard from '$lib/components/BlogCard.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import SeeMoreButton from '$lib/components/SeeMoreButton.svelte';
-	import { navigationRoutes } from '$lib/utils';
-	import type { ProjectArticle, BlogArticle, TeamArticle } from '$lib/types';
 	import TeamCard from '$lib/components/TeamCard.svelte';
 
-	export let data: {
-		projectArticles: ProjectArticle[];
-		blogArticles: BlogArticle[];
-		teamArticles: TeamArticle[];
-	};
+	import { navigationRoutes } from '$lib/utils';
+	import * as config from '$lib/config';
+
+	export let data;
 
 	const filteredProjectArticles = data.projectArticles.slice(0, 3);
 	const filteredBlogArticles = data.blogArticles.slice(0, 3);
 	const filteredTeamArticles = data.teamArticles.slice(0, 3);
 </script>
 
+<svelte:head>
+	<title>{config.title}</title>
+
+	<meta property="og:title" content={config.title} />
+	<meta property="og:description" content={config.description} />
+	<meta property="og:url" content={config.url} />
+</svelte:head>
+
 <section class="h-144">
 	<div
-		class="w-full min-h-4/5 flex flex-col justify-center items-center font-semibold bg-white-rock border-b-4 border-mariner text-5xl font-baloo"
+		class="w-full min-h-4/5 flex flex-col justify-center items-center font-bold bg-white-rock border-b-4 border-mariner text-5xl font-baloo"
 	>
 		<h1 class="text-mariner mb-4">WHISPERING</h1>
 		<h1 class="text-salmon">STARS</h1>
@@ -45,7 +50,7 @@
 			</li>
 		{/each}
 	</ul>
-	{#if filteredProjectArticles.length > 4}
+	{#if data.projectArticles.length > 4}
 		<SeeMoreButton text="See more projects" path="/projects" />
 	{/if}
 </section>
@@ -58,7 +63,7 @@
 			</li>
 		{/each}
 	</ul>
-	{#if filteredBlogArticles.length > 4}
+	{#if data.blogArticles.length > 4}
 		<SeeMoreButton text="See more articles" path="/blog" />
 	{/if}
 </section>
@@ -71,7 +76,7 @@
 			</li>
 		{/each}
 	</ul>
-	{#if filteredTeamArticles.length > 4}
+	{#if data.teamArticles.length > 4}
 		<SeeMoreButton text="Meet the team" path="/team" />
 	{/if}
 </section>

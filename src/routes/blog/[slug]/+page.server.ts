@@ -7,7 +7,6 @@ export async function load({ params }) {
             article: await getBlogArticle(params.slug),
         }
     } catch (e) {
-        console.error(e)
         return error(404, 'Article not found')
     }
 }

@@ -1,8 +1,7 @@
-import { getBlogArticles, getTeamArticles, getProjectsArticles } from '$lib/articles';
-import type { BlogArticle, TeamArticle, ProjectArticle } from '$lib/types';
-import type { RequestEvent } from '@sveltejs/kit'
+import { getProjectsArticles, getBlogArticles, getTeamArticles } from '$lib/articles';
+import type { ProjectArticle, BlogArticle, TeamArticle } from '$lib/types';
 
-export async function load({ fetch }: RequestEvent) {
+export async function load() {
     const projectArticles: ProjectArticle[] = await getProjectsArticles()
     const blogArticles: BlogArticle[] = await getBlogArticles()
     const teamArticles: TeamArticle[] = await getTeamArticles()

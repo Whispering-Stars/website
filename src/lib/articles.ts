@@ -3,8 +3,9 @@ import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import rehypeRaw from 'rehype-raw'
 import rehypeFormat from 'rehype-format'
+import rehypeCodeTitles from 'rehype-code-titles'
+import rehypePrism from 'rehype-prism-plus'
 import rehypeStringify from 'rehype-stringify'
-import rehypePrettyCode from 'rehype-pretty-code'
 
 import fs from 'fs/promises'
 import matter from "gray-matter"
@@ -15,11 +16,11 @@ import type { ProjectArticle, BlogArticle, TeamArticle, Frontmatter } from "./ty
 async function parseMarkdownFiles(folder: string) {
     try {
         const articles: any[] = []
-        const articlesPath = path.resolve(`src/articles/${folder}`)
+        const articlesPath = path.resolve(`articles/${folder}`)
         const folders = await fs.readdir(articlesPath)
 
-        for (const folder of folders) {
-            const markdownFilePath = path.join(articlesPath, `${folder}`)
+        for (const e of folders) {
+            const markdownFilePath = path.join(articlesPath, `${e}`)
             const markdownContent = await fs.readFile(markdownFilePath, 'utf-8')
             const { data } = matter(markdownContent)
 
@@ -35,17 +36,14 @@ async function parseMarkdownFiles(folder: string) {
 async function markdownToHtml(markdown: string) {
     const { content, data } = matter(markdown)
 
-    console.log(content)
-
     const result = await unified()
         .use(remarkParse)
         .use(remarkRehype, { allowDangerousHtml: true })
         .use(rehypeRaw)
         .use(rehypeFormat)
-        .use(rehypePrettyCode)
+        .use(rehypeCodeTitles)
+        .use(rehypePrism)
         .use(rehypeStringify).process(content)
-
-    console.log(result.value)
 
     return {
         content: result.value as string,
@@ -55,7 +53,7 @@ async function markdownToHtml(markdown: string) {
 
 async function parseMarkdownFile(slug: string) {
     try {
-        const articlePath = path.resolve(`src/articles/${slug}.md`)
+        const articlePath = path.resolve(`articles/${slug}.md`)
         const markdownContent = await fs.readFile(articlePath, 'utf-8')
         return markdownToHtml(markdownContent)
     } catch (e) {
@@ -66,8 +64,9 @@ async function parseMarkdownFile(slug: string) {
 export async function getProjectsArticles() {
     let articles: ProjectArticle[] = await parseMarkdownFiles('projects')
 
-    articles = articles.filter((article) => !article.draft)
-    articles = articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    articles = articles
+        .filter((article) => !article.draft)
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
     return articles
 }
@@ -75,8 +74,9 @@ export async function getProjectsArticles() {
 export async function getBlogArticles() {
     let articles: BlogArticle[] = await parseMarkdownFiles('blog')
 
-    articles = articles.filter((article) => !article.draft)
-    articles = articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    articles = articles
+        .filter((article) => !article.draft)
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
     return articles
 }

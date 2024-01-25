@@ -10,6 +10,7 @@
 
 <svelte:head>
 	<title>{config.title} | Blog</title>
+	<!-- meta data for the blog page where all the blog thumnails are displayed -->
 </svelte:head>
 
 <section>

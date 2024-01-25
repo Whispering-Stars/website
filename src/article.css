@@ -26,6 +26,5 @@
 }
 
 .prose a {
-    color: theme('colors.salmon');
     text-decoration: underline;
 }
