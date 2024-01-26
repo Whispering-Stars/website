@@ -68,8 +68,9 @@ async function parseMarkdownFile(slug: string) {
 export async function getArticles(type?: string) {
     let articles: Article[] = await parseMarkdownFiles(type)
 
-    articles = articles.filter((article) => !article.draft)
-    articles = articles.sort((a, b) => a.name.localeCompare(b.name))
+    articles = articles
+        .filter((article) => !article.draft)
+        .sort((a, b) => a.name.localeCompare(b.name))
 
     return articles
 }

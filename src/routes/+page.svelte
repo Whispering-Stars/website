@@ -27,7 +27,7 @@
 
 <section class="h-144">
 	<div
-		class="w-full min-h-4/5 flex flex-col justify-center items-center font-bold bg-white-rock border-b-4 border-mariner text-5xl lg:text-6xl font-baloo"
+		class="w-full min-h-4/5 flex flex-col justify-center items-center font-bold bg-white-rock border-b-4 border-mariner text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-baloo"
 	>
 		<h1 class="text-mariner mb-2">WHISPERING</h1>
 		<h1 class="text-salmon">STARS</h1>

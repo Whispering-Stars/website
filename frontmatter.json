@@ -66,15 +66,15 @@
   "frontMatter.content.pageFolders": [
     {
       "title": "blog",
-      "path": "[[workspace]]/articles/blog"
+      "path": "[[workspace]]/articles"
     },
     {
       "title": "team",
-      "path": "[[workspace]]/articles/team"
+      "path": "[[workspace]]/articles"
     },
     {
       "title": "projects",
-      "path": "[[workspace]]/articles/projects"
+      "path": "[[workspace]]/articles"
     }
   ]
 }
