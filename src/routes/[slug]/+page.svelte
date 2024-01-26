@@ -19,7 +19,7 @@
 
 <article class="flex justify-center py-10">
 	<div
-		class="w-80 sm:w-3/4 xl:w-1/2 rounded-lg overflow-auto prose bg-white-rock shadow-ws-default border-4 border-mariner"
+		class="w-80 sm:w-3/4 xl:w-1/3 rounded-lg overflow-auto prose bg-white-rock shadow-ws-default border-4 border-mariner"
 	>
 		<header
 			class="lg:h-40 text-mariner font-semibold bg-cover bg-center bg-no-repeat bg-opacity-5"
