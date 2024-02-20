@@ -1,5 +1,5 @@
 <script lang="ts">
-	import logo from '$lib/assets/ws_logo_no_border.svg';
+	import logo from '$lib/assets/ws_logo.svg';
 	import Menu from '$lib/icons/Menu.svelte';
 	import XMark from '$lib/icons/XMark.svelte';
 	import NavButton from '$lib/components/NavButton.svelte';
@@ -16,7 +16,7 @@
 	<div class="h-full flex mx-3 justify-between lg:justify-start items-center">
 		<a href="/">
 			<img
-				class="w-7 h-7 lg:w-8 lg:h-8 rounded-sm shadow-ws-sm"
+				class="w-8 h-8 lg:w-9 lg:h-9"
 				src={logo}
 				alt="Whispering Stars logo"
 				loading="lazy"
@@ -41,7 +41,7 @@
 {#if open}
 	<ul class="z-10 absolute w-full">
 		{#each navigationRoutes as item, idx}
-			<NavButton {item} isHeader={true} {idx} />
+			<NavButton {item} />
 		{/each}
 	</ul>
 {/if}

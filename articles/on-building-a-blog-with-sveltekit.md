@@ -8,7 +8,7 @@ tags:
   - svelte
   - markdown
   - webdev
-cover: /images/blog/on-building-a-blog-with-sveltekit/ws_logo_no_border.svg
+cover: /images/blog/on-building-a-blog-with-sveltekit/ws_logo.svg
 type: blog
 draft: false
 ---
