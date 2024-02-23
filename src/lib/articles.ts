@@ -70,7 +70,7 @@ export async function getArticles(type?: string) {
 
     articles = articles
         .filter((article) => !article.draft)
-        .sort((a, b) => a.name.localeCompare(b.name))
+        .sort((a, b) => a.name?.localeCompare(b.name))
 
     return articles
 }
