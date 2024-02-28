@@ -34,7 +34,7 @@ While searching for inspiration, I came across this [retro design](https://mac-t
 
 To complement the aesthetic,  went with the retro [SODA-CAP](https://lospec.com/palette-list/soda-cap) palette by [Cappuchi](https://lospec.com/cpch01). The limited colors reminded me of 8-bit games from my childhood.
 
-Here's a look at the final design::
+Here's a look at the final design:
 
 <div class="flex justify-center">
 <img class="w-80 border-4 border-mariner rounded-lg" src='/images/blog/on-building-a-blog-with-sveltekit/WorldDesktop.png' alt='Whispering Stars design' loading="lazy" />

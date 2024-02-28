@@ -15,11 +15,19 @@ draft: false
 
 Ahhhhhh is a little amusing app that makes your smartphone moan when it's charging. Select the sounds you want it to make when it's charging, when it's fully charged and when you unplug it and let it run in the background. Et voilà.
 
+<div class="flex justify-center">
+<img class="w-72 border-4 border-mariner rounded-lg" src='/images/projects/ahhhhhh/ahhhhhh_image1.png' alt='Whispering Stars design' loading="lazy" />
+</div>
+
 ## Why ?
 
 Ahhhhh is a joke app, as such, it's only purpose it to lighten the user and the people around. I created this app during a moment of boredom and I found it funny so I had to share it with the world.
 
 Now why don't you try it for yourself. Trust me you'll like it until you don't :).
+
+<div class="flex justify-center">
+<img class="w-72 border-4 border-mariner rounded-lg" src='/images/projects/ahhhhhh/ahhhhhh_image2.png' alt='Whispering Stars design' loading="lazy" />
+</div>
 
 ## Links
 
