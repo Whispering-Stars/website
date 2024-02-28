@@ -1,4 +1,5 @@
 <script lang="ts">
+	import banner from '$lib/assets/ws_banner_logo.png';
 	import NavButton from '$lib/components/NavButton.svelte';
 	import BlogCard from '$lib/components/BlogCard.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
@@ -29,8 +30,14 @@
 	<div
 		class="w-full min-h-4/5 flex flex-col justify-center items-center font-bold bg-white-rock border-b-4 border-mariner text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-baloo"
 	>
-		<h1 class="text-mariner mb-2">WHISPERING</h1>
-		<h1 class="text-salmon">STARS</h1>
+		<img
+			class="w-80 h-80 mb-12 lg:mb-6 lg:w-96 lg:h-96"
+			src={banner}
+			alt=""
+			loading="lazy"
+			width="250"
+			height="250"
+		/>
 	</div>
 	<ul
 		class="absolute z-10 w-72 lg:w-1/2 2xl:w-1/4 bg-salmon left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-auto border-4 border-mariner rounded-md lg:flex lg:justify-center"

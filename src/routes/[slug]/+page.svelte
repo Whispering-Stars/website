@@ -11,9 +11,9 @@
 </script>
 
 <svelte:head>
-	<title>{frontmatter.title}</title>
+	<title>{frontmatter.title ?? frontmatter.name}</title>
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content={frontmatter.title} />
+	<meta property="og:title" content={frontmatter.title ?? frontmatter.name} />
 	<meta property="og:description" content={frontmatter.description} />
 </svelte:head>
 
@@ -26,7 +26,7 @@
 			style={`background-image:linear-gradient(rgba(255, 125, 110, .9), rgba(232, 231, 203, .95)), url(${frontmatter.cover})`}
 		>
 			<div class="p-4 lg:py-10 lg:px-5">
-				<h1 class="text-2xl lg:text-3xl mb-4">{frontmatter.title}</h1>
+				<h1 class="text-2xl lg:text-3xl mb-4">{frontmatter.title ?? frontmatter.name}</h1>
 				<small class="">{formatDate(frontmatter.date)}</small>
 			</div>
 		</header>

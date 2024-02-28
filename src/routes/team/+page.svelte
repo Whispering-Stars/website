@@ -1,10 +1,10 @@
 <script lang="ts">
 	import TeamCard from '$lib/components/TeamCard.svelte';
 	import * as config from '$lib/config';
-	import type { TeamArticle } from '$lib/types';
+	import type { Article } from '$lib/types';
 
 	export let data: {
-		articles: TeamArticle[];
+		articles: Article[];
 	};
 </script>
 
