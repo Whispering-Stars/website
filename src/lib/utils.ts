@@ -12,6 +12,10 @@ export const navigationRoutes: Array<NavigationRoute> = [
     {
         name: 'Team',
         path: '/team'
+    },
+    {
+        name: 'Portfolio',
+        path: '/portfolio'
     }
 ];
 
