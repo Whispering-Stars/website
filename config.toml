@@ -20,6 +20,8 @@ theme_color = "froly"
 
 logo_text = "Whispering Stars"
 
+copyright = "Whispering Stars"
+
 main_menu = [
     { url = "/about/", name = "about" },
     { url = "/contact/", name = "contact" },
