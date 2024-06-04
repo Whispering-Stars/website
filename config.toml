@@ -27,6 +27,9 @@ main_menu = [
     { url = "/contact/", name = "contact" },
 ]
 
-author = "SSebigo!"
+taxonomies = [
+    {name = "tags"},
+    {name = "categories"},
+]
 
-show_author = false
+author = "SSebigo!"
