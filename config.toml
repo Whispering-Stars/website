@@ -3,23 +3,16 @@ base_url = "https://whispering-stars.com/"
 
 theme = "zerm"
 
-# Whether to automatically compile all Sass files in the sass directory
-compile_sass = true
-
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
-[markdown]
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = true
+taxonomies = [{ name = "tags", feed = true }, { name = "categories" }]
 
 [extra]
 # Put all your custom variables here
 theme_color = "froly"
 
 logo_text = "Whispering Stars"
-
 copyright = "Whispering Stars"
 
 main_menu = [
@@ -27,9 +20,8 @@ main_menu = [
     { url = "/contact/", name = "contact" },
 ]
 
-taxonomies = [
-    {name = "tags"},
-    {name = "categories"},
-]
-
+show_author = true
 author = "SSebigo!"
+
+show_categories = true
+show_tags = true
