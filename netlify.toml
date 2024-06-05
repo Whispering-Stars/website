@@ -1,3 +1,9 @@
 [build]
-	command = "npm run build"
-	publish = "build"
+publish = "public"
+command = "zola build"
+
+[build.environment]
+ZOLA_VERSION = "0.18.0"
+
+[context.deploy-preview]
+command = "git clone https://github.com/ejmg/zerm.git themes/zerm/ && zola build --base-url $DEPLOY_PRIME_URL"
