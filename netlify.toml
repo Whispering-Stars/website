@@ -1,6 +1,6 @@
 [build]
 publish = "public"
-command = "zola build"
+command = "git clone https://github.com/ejmg/zerm.git themes/zerm/ && zola build"
 
 [build.environment]
 ZOLA_VERSION = "0.18.0"
