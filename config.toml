@@ -1,15 +1,29 @@
 # The URL the site will be built for
 base_url = "https://whispering-stars.com/"
 
+default_language = "en"
+
+generate_feed = true
+
 theme = "zerm"
 
-# Whether to build a search index to be used later on by a JavaScript library
+compile_sass = true
+
+highlight_code = true
+
+highlight_theme = "axar"
+
 build_search_index = true
 
 taxonomies = [{ name = "tags", feed = true }, { name = "categories" }]
 
 [extra]
-# Put all your custom variables here
+author = "SSebigo!"
+show_author = true
+
+show_categories = true
+show_tags = true
+
 theme_color = "froly"
 
 logo_text = "Whispering Stars"
@@ -19,9 +33,3 @@ main_menu = [
     { url = "/about/", name = "about" },
     { url = "/contact/", name = "contact" },
 ]
-
-show_author = true
-author = "SSebigo!"
-
-show_categories = true
-show_tags = true
