@@ -6,4 +6,4 @@ command = "zola build"
 ZOLA_VERSION = "0.18.0"
 
 [context.deploy-preview]
-command = "zola build --base-url $DEPLOY_PRIME_URL"
+command = "git clone https://github.com/ejmg/zerm.git themes/zerm/ && zola build --base-url $DEPLOY_PRIME_URL"
