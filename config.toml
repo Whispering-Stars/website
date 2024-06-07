@@ -1,6 +1,9 @@
 # The URL the site will be built for
 base_url = "https://whispering-stars.com/"
 
+title = "Whispering Stars"
+description = "A place for my thoughts, writings, art and knowledge I don't want to forget."
+
 default_language = "en"
 
 generate_feed = true
