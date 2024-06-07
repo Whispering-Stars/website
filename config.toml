@@ -9,13 +9,14 @@ theme = "zerm"
 
 compile_sass = true
 
-highlight_code = true
-
-highlight_theme = "axar"
-
 build_search_index = true
 
 taxonomies = [{ name = "tags", feed = true }, { name = "categories" }]
+
+[markdown]
+highlight_code = true
+
+highlight_theme = "gruvbox-dark"
 
 [extra]
 author = "SSebigo!"
@@ -33,3 +34,5 @@ main_menu = [
     { url = "/about/", name = "about" },
     { url = "/contact/", name = "contact" },
 ]
+
+read_more = "Read more"
