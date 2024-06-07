@@ -1,9 +1,9 @@
 [build]
 publish = "public"
-command = "git clone https://github.com/ejmg/zerm.git themes/zerm/ && zola build"
+command = "rm -rf themes/zerm && git clone https://github.com/ejmg/zerm.git themes/zerm/ && zola build"
 
 [build.environment]
 ZOLA_VERSION = "0.18.0"
 
 [context.deploy-preview]
-command = "git clone https://github.com/ejmg/zerm.git themes/zerm/ && zola build --base-url $DEPLOY_PRIME_URL"
+command = "rm -rf themes/zerm && git clone https://github.com/ejmg/zerm.git themes/zerm/ && zola build --base-url $DEPLOY_PRIME_URL"
