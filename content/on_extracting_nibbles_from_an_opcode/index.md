@@ -54,3 +54,21 @@ let opcode: u16 = shift | data[i + 1]; // opcode equals 0b0001_0010_0000_0010
 ```
 
 # Extraire les nibbles
+
+Extraire les nibbles revient a separer l'opcode en 4 moitie d'octet (4 bits).
+
+```rs
+let nibbles: (u16, u16, u16, u16) = (
+    (opcode & 0xF000) >> 12,
+    (opcode & 0x0F00) >> 8,
+    (opcode & 0x00F0) >> 4,
+    (opcode & 0x000F),
+);
+```
+
+Voici plus bas un code detaille et commente de la premiere etape (le reste peut etre extrapole a partir de cette etape). Essentiellement dans un premier lieu j'extrait les 4 bits qui m'interesse avec l'operateur `&` et ensuite, je decale vers la droite du nombre de bits (pour cette etape, 12 bits) qui nous separe des 4 bits les plus a droite.
+
+```rs
+// opcode binaire actuel: 0b0001_0010_0000_0010
+let opcode: u16 = 0x1202;
+```
