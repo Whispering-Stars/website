@@ -19,7 +19,7 @@ taxonomies = [{ name = "tags", feed = true }, { name = "categories" }]
 [markdown]
 highlight_code = true
 
-highlight_theme = "gruvbox-dark"
+highlight_theme = "1337"
 
 [extra]
 author = "SSebigo!"
