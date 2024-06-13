@@ -1,49 +1,48 @@
 +++
 title = "On extracting opcode and nibbles"
 date = 2024-06-05
-draft = true
 
 [taxonomies]
 tags = ["rust"]
 categories = ["emulation", "programming"]
 +++
 
-Disons que je viens de lire une ROM de Chip8, je me retrouve avec la donnee suivante:
+Let's say I've just read a Chip8 ROM, I end up with the following data:
 
 ```rs
 let data: Vec<u16> = vec![0x12, 0x02];
 ```
 
-# Extraire l'opcode
+# Extracting the opcode
 
-Pour mieux comprendre ce que je vais faire, je dois voir la donnee en binaire:
+To better understand what I'm going to do, I need to see the data in binary:
 
 |        | `data[0]`               | `data[1]`               |
 |:------:|:-----------------------:|:-----------------------:|
 | hex    | `0x12`                  | `0x02`                  |
 | binary | `0b0000_0000_0001_0010` | `0b0000_0000_0000_0010` |
 
-Le but de l'extraction d'opcode est en fait de fusionner deux instruction 8bits en une de 16bits (du moins pour les instructions de Chip8).
-Voici comment faire:
+The aim of opcode extraction is to merge two 8-bit instructions into one 16-bit instruction (at least for Chip8 instructions).
+Here's how:
 
 ```rs
 let i: usize = 0;
 let opcode: u16 = (data[i] << 8) | data[i + 1];
 ```
 
-Voici plus bas uncode detaillee et commente de chaque etape pour visualiser ce qu'il se passe, mais esentiellement, je decale `data[i]` de 8 bits vers la gauche avec l'operateur `<<` et ensuite je fusionne la valeur obtenue avec `data[i + 1]` en utilisant l'operateur `|`.
+Here's a detailed and commented code of each step above to visualize what's going on, but essentially, I shift `data[i]` 8 bits to the left with the `<<` operator and then merge the resulting value with `data[i + 1]` using the `|` operator.
 
 ```rs
 let i: usize = 0;
 
-// l'operateur << bouge chaque bits de 8 position sur la gauche
+// the << operator moves each bit 8 positions to the left
 // data[i] equals 0b0000_0000_0001_0010
 let shift: u16 = data[i] << 8; // shift equals 0b0001_0010_0000_0000
 // before shift: 0b0000_0000_0001_0010
 //               ---------------------
 // after shift : 0b0001_0010_0000_0000
 
-// l'operateur | retourne 1 si au moins une des valeurs de l'expression est 1
+// the | operator returns 1 if at least one of the values in the expression is 1
 // data[i + 1] equals 0b0000_0000_0000_0010
 let opcode: u16 = shift | data[i + 1]; // opcode equals 0b0001_0010_0000_0010
 // shift      : 0b0001_0010_0000_0000
@@ -53,9 +52,9 @@ let opcode: u16 = shift | data[i + 1]; // opcode equals 0b0001_0010_0000_0010
 // opcode     : 0b0001_0010_0000_0010
 ```
 
-# Extraire les nibbles
+# Extracting nibbles
 
-Extraire les nibbles revient a separer l'opcode en 4 moitie d'octet (4 bits).
+Extracting the nibbles means separating the opcode into 4 half-byte (4 bits).
 
 ```rs
 let nibbles: (u16, u16, u16, u16) = (
@@ -66,9 +65,24 @@ let nibbles: (u16, u16, u16, u16) = (
 );
 ```
 
-Voici plus bas un code detaille et commente de la premiere etape (le reste peut etre extrapole a partir de cette etape). Essentiellement dans un premier lieu j'extrait les 4 bits qui m'interesse avec l'operateur `&` et ensuite, je decale vers la droite du nombre de bits (pour cette etape, 12 bits) qui nous separe des 4 bits les plus a droite.
+Here's a detailed and commented code of the first step (the rest can be extrapolated from this step). Essentially, I first extract the 4 bits I'm interested in with the `&` operator and then shift to the right the number of bits (for this step, 12 bits) that separate us from the 4 rightmost bits.
 
 ```rs
 // opcode binaire actuel: 0b0001_0010_0000_0010
 let opcode: u16 = 0x1202;
+
+// the & operator returns 1 if and only if both values of the expression are 1
+let and_mask: u16 = opcode & 0xF000; // and_mask equals 0b0001_0000_0000_0000
+
+// the >> operator moves each bit of P position to the left (here 12)
+let nibble: u16 = and_mask >> 12; // nibble equals 0b0000_0000_0000_0001
+//                           |  |
+//                           ---- usually a multiple of 4
+// opcode     : 0b0001_0010_0000_0010
+//              ---------------------
+// and_mask   : 0b0001_0000_0000_0000
+//              ---------------------
+// nibble     : 0b0000_0000_0000_0001
 ```
+
+> Don't forget it the next time I do some emulation!
