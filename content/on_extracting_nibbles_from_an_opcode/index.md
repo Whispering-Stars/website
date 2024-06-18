@@ -1,5 +1,6 @@
 +++
 title = "On extracting opcode and nibbles"
+description = "How to extract nibbles from a Chip8 instruction."
 date = 2024-06-05
 
 [taxonomies]
