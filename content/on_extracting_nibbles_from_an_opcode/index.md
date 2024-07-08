@@ -86,4 +86,4 @@ let nibble: u16 = and_mask >> 12; // nibble equals 0b0000_0000_0000_0001
 // nibble     : 0b0000_0000_0000_0001
 ```
 
-> Don't forget it the next time I do some emulation!
+> Remeber it!
