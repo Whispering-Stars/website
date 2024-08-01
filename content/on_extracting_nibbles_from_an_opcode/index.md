@@ -8,7 +8,7 @@ tags = ["rust"]
 categories = ["emulation", "programming"]
 +++
 
-Let's say I've just read a Chip8 ROM, I end up with the following data:
+Let's say you've successfully read a Chip8 ROM and ended up with the following data:
 
 ```rs
 let data: Vec<u16> = vec![0x12, 0x02];
@@ -16,14 +16,14 @@ let data: Vec<u16> = vec![0x12, 0x02];
 
 # Extracting the opcode
 
-To better understand what I'm going to do, I need to see the data in binary:
+To better understand what we're going to do, we need to see the binary data:
 
 |        | `data[0]`               | `data[1]`               |
 |:------:|:-----------------------:|:-----------------------:|
 | hex    | `0x12`                  | `0x02`                  |
 | binary | `0b0000_0000_0001_0010` | `0b0000_0000_0000_0010` |
 
-The aim of opcode extraction is to merge two 8-bit instructions into one 16-bit instruction (at least for Chip8 instructions).
+As I understand it, the aim of opcode extraction is to merge two 8-bit instructions into one 16-bit instruction (at least for Chip8 instructions).
 Here's how:
 
 ```rs
@@ -31,7 +31,7 @@ let i: usize = 0;
 let opcode: u16 = (data[i] << 8) | data[i + 1];
 ```
 
-Here's a detailed and commented code of each step above to visualize what's going on, but essentially, I shift `data[i]` 8 bits to the left with the `<<` operator and then merge the resulting value with `data[i + 1]` using the `|` operator.
+Here's a detailed and commented code of each step above to visualize what's going on, but essentially, we shift `data[i]` 8 bits to the left with the `<<` operator and then merge the resulting value with `data[i + 1]` using the `|` operator.
 
 ```rs
 let i: usize = 0;
@@ -66,7 +66,7 @@ let nibbles: (u16, u16, u16, u16) = (
 );
 ```
 
-Here's a detailed and commented code of the first step (the rest can be extrapolated from this step). Essentially, I first extract the 4 bits I'm interested in with the `&` operator and then shift to the right the number of bits (for this step, 12 bits) that separate us from the 4 rightmost bits.
+Here's a detailed and commented code of the first step (the rest can be extrapolated from this step). Essentially, first we extract the 4 bits we're interested in with the `&` operator and then shift to the right the number of bits (for this step, 12 bits) that separate us from the 4 rightmost bits.
 
 ```rs
 // opcode binaire actuel: 0b0001_0010_0000_0010
@@ -86,4 +86,4 @@ let nibble: u16 = and_mask >> 12; // nibble equals 0b0000_0000_0000_0001
 // nibble     : 0b0000_0000_0000_0001
 ```
 
-> Remeber it!
+> This is an important part of writing an emulator, at least for simple emulators like the Chip8.

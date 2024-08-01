@@ -1,5 +1,6 @@
 +++
 title = "On fixing Dolibarr \"$isextrafieldmanaged must not be define\" error"
+description = "How to fix \"$isextrafieldmanaged must not be define\" when migrating from one Dolibarr version to another"
 date = 2024-06-04
 
 [taxonomies]
